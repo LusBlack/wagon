@@ -33,4 +33,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function driver() {
+        return $this->hasOne(Driver::class);
+    }
+
+    public function trips() {
+        return $this->hasMany(Trip::class);
+    }
+
 }
