@@ -3,10 +3,11 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use NotificationChannels\Twilio\TwilioChannel;
 use NotificationChannels\Twilio\TwilioSmsMessage;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class LoginNeedsVerification extends Notification
 {
@@ -27,7 +28,7 @@ class LoginNeedsVerification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['TwilioChannel::class'];
+        return [TwilioChannel::class];
     }
 
     /**
@@ -42,7 +43,7 @@ class LoginNeedsVerification extends Notification
         ]);
 
         return(new TwilioSmsMessage())
-        ->content("Your login was complete {$loginCode} do not share this with anybody");
+        ->content("Your login was complete {$loginCode}, do not share this with anybody");
 
    }
 
