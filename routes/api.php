@@ -16,3 +16,4 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::post('/login', [LoginController::class, 'submit']);
+Route::post('/login/verify', [LoginController::class, 'verify']);

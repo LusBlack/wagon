@@ -25,7 +25,7 @@ class LoginController extends Controller
             return response()->json(['message'=> 'Could not process a user with that phone number'], 401);
         }
 
-        $user->notify(new LoginNeedsVerification());
+        $user->notify(new LoginNeedsVerification);
 
         // return a response
         return response()->json(['message' => 'Text message notification sent. ']);
@@ -50,16 +50,9 @@ class LoginController extends Controller
             ]);
             return $user->createToken($request->login_code)->plainTextToken;
         }
-        if(!$user) {
-            return response()->json([
-             'message' => 'Invalid verification code.'
-            ], 401);
-        }
-        //send the user a one time use code
-        $user->notify(new LoginNeedsVerification());
 
         //return response
-        return response()->json(['message' => 'Text message notification sent']);
+        return response()->json(['message' => 'Invalid verification code'], 401);
 
     }
 
