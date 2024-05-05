@@ -17,3 +17,8 @@ use App\Http\Controllers\LoginController;
 
 Route::post('/login', [LoginController::class, 'submit']);
 Route::post('/login/verify', [LoginController::class, 'verify']);
+
+Route::get('/user', function(Request $request) {
+    return $request->user();
+
+});
