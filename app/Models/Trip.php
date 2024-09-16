@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 namespace App\Models;
 
@@ -15,7 +15,8 @@ class Trip extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function trips() {
-        return $this->hasMany(Trips::class);
+    public function driver() {
+        return $this->belongsTo(Driver::class);
     }
+
 }
