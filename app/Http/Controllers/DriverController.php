@@ -10,9 +10,10 @@ class DriverController extends Controller
 
         //return the user and assoc driver model
         $user = $request->user();
-        $user->Load('driver');
+        $user->load('driver');
 
-        return $request->user();
+       // return $request->user();
+       return $user;
     }
 
     public function update(Request $request) {
