@@ -25,7 +25,7 @@ class LoginController extends Controller
             return response()->json(['message'=> 'Could not process a user with that phone number'], 401);
         }
 
-        $user->notify(new LoginNeedsVerification);
+        //$user->notify(new LoginNeedsVerification);
 
         // return a response
         return response()->json(['message' => 'Text message notification sent. ']);
@@ -52,7 +52,7 @@ class LoginController extends Controller
         }
 
 
-        return response()->json(['message' => 'phone_number'], 401);
+        return response()->json(['message' => 'user not found'], 401);
 
     }
 
